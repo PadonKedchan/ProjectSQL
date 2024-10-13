@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> 
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif; 
+            overflow-x: hidden; 
+        }
+
+        .sidebar {
+            height: 100vh;
+            background-color: #1c1c1c;
+            padding: 20px;
+            flex-shrink: 0;
+            width: 250px; 
+            transition: all 0.3s ease-in-out;
+            overflow-y: auto; 
+        }
+
+        .sidebar:hover {
+            width: 280px; 
+        }
+
+        .sidebar a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sidebar a:hover {
+            text-decoration: none;
+            color: #ffc107; 
+            padding-left: 10px; 
+        }
+
+        .sidebar .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px; 
+        }
+
+        .sidebar .bi {
+            font-size: 1.2rem;
+        }
+
+        .main-content {
+            padding: 20px;
+            flex-grow: 1;
+            overflow-y: auto; 
+        }
+
+        .card {
+            background-color: #2a2a2a;
+            border: none;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title,
+        .card-text {
+            color: #ffffff;
+        }
+
+        .btn-green {
+            background-color: #28a745;
+            color: #ffffff;
+            transition: background-color 0.3s;
+        }
+
+        .btn-green:hover {
+            background-color: #dc3545; 
+        }
+
+        .logout {
+            background-color: #d9534f;
+            color: #fff;
+            border: none;
+        }
+
+        .table-dark {
+            background-color: #212529; 
+        }
+
+        .table-striped > tbody > tr:nth-of-type(odd) > * {
+            --bs-table-accent-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        .dashboard-link {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .dashboard-link:hover {
+            color: #ffc107; 
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 400px; 
+        }
+
+        /* เพิ่มเติม */
+        .text-center h2 {  
+            color: #ffc107; 
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <div class="sidebar">
+            <h2><a href="dashboard.html" class="dashboard-link">Dashboard</a></h2>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-people-fill"></i> Manage Employees
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="attendance_records.html">
+                        <i class="bi bi-calendar-check-fill"></i> Attendance Records
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Absenteeism.html">
+                        <i class="bi bi-person-x-fill"></i> Absenteeism Reports
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link logout" href="logout.php" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                        <i class="bi bi-box-arrow-left"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <h1 class="text-center mb-4">HR Dashboard</h1> 
+            <p class="text-center lead">Overview of employee attendance data</p>
+
+            <div class="row justify-content-center align-items-center mt-4">
+                <div class="col-md-3 text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Date</h5>
+                            <p class="text-white">4/28/2023 - 11/30/2023</p> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Employees</h5>
+                            <h2 class="text-white">28</h2> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Employee Days Absent</h5>
+                            <h2 class="text-white">296</h2> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-12 text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Employee Leave Overview</h5>
+                            <p class="text-white">Total Sick Leaves Taken: 50</p> 
+                            <p class="text-white">Total Casual Leaves Taken: 40</p> 
+                            <p class="text-white">Average Leave per Employee: 3.2 days</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Sick Leave vs. Casual Leave</h5>
+                            <div class="chart-container">
+                                <canvas id="leaveChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Employee Work Location Breakdown</h5>
+                            <div class="chart-container">
+                                <canvas id="locationChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Attendance by Department</h5>
+                            <div class="chart-container">
+                                <canvas id="departmentChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <h2 class="text-center">Attendance Records</h2>
+                    <table class="table table-dark table-striped"> 
+                        <thead>
+                            <tr>
+                                <th>Record ID</th>
+                                <th>Check-in Time</th>
+                                <th>Check-out Time</th>
+                                <th>Employee ID</th>
+                                <th>Employee Name</th>
