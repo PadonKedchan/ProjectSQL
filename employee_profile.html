@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>พนักงาน</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #121212; /* สีพื้นหลังเข้ม */
+            color: #eee; /* สีข้อความ */
+        }
+
+        .employee-profile {
+            background-color: #212529; /* สีพื้นหลังของโปรไฟล์ */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-icon {
+            margin-right: 20px;
+        }
+
+        .profile-info h2 {
+            color: #ffc107; /* สีหัวเรื่อง */
+        }
+
+        .additional-info h3,
+        .attendance-history h3 {
+            color: #ffc107; /* สีหัวเรื่อง */
+        }
+
+        .table {
+            background-color: #343a40; /* สีพื้นหลังของตาราง */
+            color: #eee; /* สีข้อความในตาราง */
+        }
+
+        .table th,
+        .table td {
+            border-color: #343a40; /* สีของเส้นขอบ */
+        }
+
+        .table-dark th {
+            background-color: #343a40; /* สีกระดาษหัวตาราง */
+            color: #fff; /* สีตัวอักษร */
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #2a2a2a; /* สีพื้นหลังแถวเลขคี่ */
+        }
+
+        .table-striped tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* สีพื้นหลังเมื่อวางเมาส์ */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h2>พนักงาน</h2>
+            <nav class="top-nav">
+                <ul>
+                    <li><a href="home.html">หน้าหลัก</a></li>
+                    <li><a href="requests.html">คำขอ</a></li>
+                    <li><a href="schedule.html">ตารางกะงาน</a></li>
+                </ul>
+            </nav>
+            <div class="icons">
+                <div class="notification" onclick="location.href='notifications.html';">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="user-icon" onclick="location.href='employee_profile.html';">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="employee-profile">
+            <div class="profile-header">
+                <div class="profile-icon">
+                    <i class="fas fa-user-circle fa-5x"></i>
+                </div>
+                <div class="profile-info">
+                    <h2>รหัสพนักงาน: 12345</h2>
+                    <p>ชื่อ: name</p>
+                    <p>นามสกุล: name</p>
+                    <p>เบอร์โทร: 012-3456789</p>
+                    <p>อีเมล: name@example.com</p>
+                    <p>แผนก: ฝ่ายผลิต</p>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <h3>ข้อมูลเพิ่มเติม</h3>
+                <p>วันที่เข้าทำงาน: 01/01/2020</p>
+                <p>อายุงาน: 4 ปี 9 เดือน 5 วัน</p>
+                <p>วันเกิด: 10/10/1990</p>
+                <p>อายุ: 33 ปี</p>
+                <p>กะงานปัจจุบัน: กะเช้า 6:00 - 13:00</p>
+            </div>
+
+            <div class="attendance-history">
+                <h3>ประวัติเวลาการเข้า-ออกงาน</h3>
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>วันที่</th>
+                            <th>เวลาเข้า</th>
+                            <th>เวลาออก</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01/10/2024</td>
+                            <td>06:05</td>
+                            <td>13:02</td>
+                        </tr>
+                        <tr>
+                            <td>02/10/2024</td>
+                            <td>06:03</td>
+                            <td>13:05</td>
+                        </tr>
+                        <tr>
+                            <td>03/10/2024</td>
+                            <td>06:01</td>
+                            <td>13:00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

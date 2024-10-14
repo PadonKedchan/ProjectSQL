@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าหลักผู้จัดการ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #121212; /* พื้นหลัง */
+            color: #e0e0e0; /* สีข้อความ */
+            font-family: Arial, sans-serif; /* ฟอนต์ */
+        }
+        .header {
+            background-color: #1f1f1f; /* พื้นหลังของ header */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        .top-nav li {
+            display: inline;
+            margin: 0 15px;
+        }
+        .top-nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+        .top-nav a.active {
+            color: #ffc107; /* สีสำหรับลิงก์ที่เลือก */
+        }
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+        .card {
+            background-color: #1f1f1f; /* พื้นหลังของการ์ด */
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .card h3 {
+            color: #ffc107; /* สีหัวข้อการ์ด */
+        }
+        .card-action button {
+            background-color: #ffc107; /* ปุ่มสีเหลือง */
+            color: #212529; /* สีข้อความปุ่ม */
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .card-action button:hover {
+            background-color: #e0a800; /* สีปุ่มเมื่อชี้เมาส์ */
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h2>ผู้จัดการ</h2>
+            <nav class="top-nav">
+                <ul>
+                    <li><a href="manager_home.html">หน้าหลัก</a></li>
+                    <li><a href="manager_requests.html">คำขอ</a></li>
+                    <li><a href="manager_schedule.html">ตารางกะงาน</a></li>
+                    <li><a href="manager_reports.html">รายงาน</a></li>
+                    <li><a href="home.html" class="active">บัญชีของพนักงาน</a></li>
+                </ul>
+            </nav>
+            <div class="icons">
+                <div class="notification" onclick="location.href='notifications.html';">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="user-icon" onclick="location.href='manager_profile.html';">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="cards">
+            <div class="card">
+                <h3>ตารางกะงาน</h3>
+                <ul>
+                    <li>พนักงาน: สมชาย ใจดี - กะ: เช้า (6:00-15:00)</li>
+                    <li>พนักงาน: สาวิตรี อารมณ์ดี - กะ: บ่าย (14:00-23:00)</li>
+                    <li>พนักงาน: อดิศักดิ์ เหลืองอร่าม - กะ: ดึก (22:00-7:00)</li>
+                </ul>
+                <div class="card-action">
+                    <button onclick="location.href='manager_schedule.html'">ดูทั้งหมด</button>
+                </div>            
+            </div>
+            <div class="card">
+                <h3>คำขอจากพนักงาน</h3>
+                <ul>
+                    <li>คำขอเปลี่ยนกะจาก สมชาย ใจดี</li>
+                    <li>คำขอวันหยุดจาก สาวิตรี อารมณ์ดี</li>
+                </ul>
+                <div class="card-action">
+                    <button onclick="location.href='manager_requests.html'">ดูทั้งหมด</button>
+                </div>
+            </div>
+            <div class="card">
+                <h3>การแจ้งเตือน</h3>
+                <ul>
+                    <li>แจ้งเตือน: การอนุมัติคำขอเปลี่ยนกะ</li>
+                    <li>แจ้งเตือน: กะงานที่ใกล้ถึง</li>
+                </ul>
+                <div class="card-action">   
+                    <button onclick="location.href='manager_notifications.html'">ดูทั้งหมด</button>
+                </div>
+            </div>
+            <div class="card">
+                <h3>รายงาน</h3>
+                <ul>
+                    <li>รายงานการเข้าทำงานของพนักงาน</li>
+                    <li>รายงานการลา</li>
+                </ul>
+                <div class="card-action">
+                    <button onclick="location.href='manager_reports.html'">ดูทั้งหมด</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

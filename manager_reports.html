@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายงานจากฝ่าย HR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #121212; color: #e0e0e0;">
+    <div class="dashboard">
+        <header class="header" style="background-color: #1f1f1f; padding: 20px; border-bottom: 1px solid #333;">
+            <h2>รายงานจากฝ่าย HR</h2>
+            <nav class="top-nav">
+                <ul>
+                    <li><a href="manager_home.html">หน้าหลัก</a></li>
+                    <li><a href="manager_requests.html">คำขอ</a></li>
+                    <li><a href="manager_schedule.html">ตารางกะงาน</a></li>
+                    <li><a href="manager_reports.html">รายงาน</a></li>
+                    <li><a href="home.html" class="active">บัญชีของพนักงาน</a></li>
+                </ul>
+            </nav>
+            <div class="icons">
+                <div class="notification" onclick="location.href='manager_notifications.html';">
+                    <i class="fas fa-bell" style="color: #e0e0e0;"></i>
+                    <span class="badge" style="background-color: #f44336; color: white; border-radius: 50%; padding: 0 5px;">3</span>
+                </div>
+                <div class="user-icon" onclick="location.href='manager_profile.html';">
+                    <i class="fas fa-user-circle" style="color: #e0e0e0;"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="reports-container" style="padding: 20px;background-color: #1f1f1f;">
+            <h2 style="color: #e0a800;">รายงานที่มีให้ดู</h2>
+            <ul class="reports-list" style="list-style-type: none; padding: 0; margin: 0;">
+                <li>
+                    <a href="report_attendance.html" style="color: #000000;">รายงานการเข้า-ออกงาน</a>
+                </li>
+                <li>
+                    <a href="report_leave.html" style="color: #000000;">รายงานการลา</a>
+                </li>
+                <li>
+                    <a href="report_schedule.html" style="color: #000000;">รายงานตารางกะ</a>
+                </li>
+                <li>
+                    <a href="report_no_show.html" style="color: #000000;">รายงาน No Call/No Show</a>
+                </li>
+                <li>
+                    <a href="report_employee_data.html" style="color: #000000;">รายงานข้อมูลพนักงาน</a>
+                </li>
+                <!-- เพิ่มรายงานเพิ่มเติมตามต้องการ -->
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

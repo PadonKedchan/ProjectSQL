@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำขอเปลี่ยนกะงาน/การลา</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #121212;
+            /* สีพื้นหลังเข้ม */
+            color: #eee;
+            /* สีข้อความ */
+        }
+
+        .employee-profile {
+            background-color: #212529;
+            /* สีพื้นหลังของโปรไฟล์ */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-icon {
+            margin-right: 20px;
+        }
+
+        .profile-info h2 {
+            color: #ffc107;
+            /* สีหัวเรื่อง */
+        }
+
+        .additional-info h3,
+        .attendance-history h3 {
+            color: #ffc107;
+            /* สีหัวเรื่อง */
+        }
+
+        .table {
+            background-color: #343a40;
+            /* สีพื้นหลังของตาราง */
+            color: #eee;
+            /* สีข้อความในตาราง */
+        }
+
+        .table th,
+        .table td {
+            border-color: #343a40;
+            /* สีของเส้นขอบ */
+        }
+
+        .table-dark th {
+            background-color: #343a40;
+            /* สีกระดาษหัวตาราง */
+            color: #fff;
+            /* สีตัวอักษร */
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #2a2a2a;
+            /* สีพื้นหลังแถวเลขคี่ */
+        }
+
+        .table-striped tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            /* สีพื้นหลังเมื่อวางเมาส์ */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h2>พนักงาน</h2>
+            <nav class="top-nav">
+                <ul>
+                    <li><a href="home.html">หน้าหลัก</a></li>
+                    <li><a href="requests.html">คำขอ</a></li>
+                    <li><a href="schedule.html">ตารางกะงาน</a></li>
+                </ul>
+            </nav>
+            <div class="icons">
+                <div class="notification" onclick="location.href='notifications.html';">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="user-icon" onclick="location.href='employee_profile.html';">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="request-form" style="background-color: #212529;">
+            <h2 style="color: #ffc107;">คำขอเปลี่ยนกะงาน / การลา</h2>
+    
+            <form id="request-form" action="#" method="POST" enctype="multipart/form-data">
+                <!-- ประเภทคำขอ -->
+                <label for="request-type"  style="color: #fff;" >ประเภทคำขอ:</label>
+                <select id="request-type" name="request-type" required onchange="updateOptions()"
+                    style="background-color: #343a40; color: #eee; border: 1px solid #444; border-radius: 5px; padding: 5px;">
+                    <option value="" disabled selected>-- เลือกประเภทคำขอ --</option>
+                    <option value="leave">ขอลา</option>
+                    <option value="shift-change">ขอเปลี่ยนกะ</option>
+                </select>
+    
+                <!-- ประเภทการลาหรือเปลี่ยนกะ -->
+                <label for="subtype"style="color: #fff;">ประเภทการลาหรือเปลี่ยนกะ:</label>
+                <select id="subtype" name="subtype" required
+                    style="background-color: #343a40; color: #eee; border: 1px solid #444; border-radius: 5px; padding: 5px;">
+                    <option value="" disabled selected>-- เลือกประเภท --</option>
+                </select>
+    
+                <!-- ช่วงเวลากะงาน -->
+                <div id="work-schedule" style="display: none;">
+                    <label for="shift-time">ช่วงเวลากะงาน:</label>
+                    <select id="shift-time" name="shift-time" required
+                        style="background-color: #343a40; color: #eee; border: 1px solid #444; border-radius: 5px; padding: 5px;">
+                        <option value="" disabled selected>-- เลือกช่วงเวลากะ --</option>
+                        <option value="morning">06:00 - 13:00</option>
+                        <option value="afternoon">11:00 - 18:00</option>
+                        <option value="night">17:00 - 24:00</option>
+                        <option value="midnight">22:00 - 07:00</option>
+                    </select>
+                </div>
+    
+                <!-- วันเวลาเริ่มและสิ้นสุด -->
+                <div id="leave-dates" style="display: none;">
+                    <label for="start-date"style="color: #fff;">วันและเวลาเริ่ม:</label>
+                    <input type="datetime-local" id="start-date" name="start-date" required
+                        style="background-color: #343a40; color: #eee; border: 1px solid #444; border-radius: 5px; padding: 5px;">
+    
+                    <label for="end-date"style="color: #fff;">วันและเวลาสิ้นสุด:</label>
+                    <input type="datetime-local" id="end-date" name="end-date" required
+                        style="background-color: #343a40; color: #eee; border: 1px solid #444; border-radius: 5px; padding: 5px;">
+                </div>
+    
+                <!-- รายละเอียดเพิ่มเติม -->
+                <label for="details"style="color: #fff;">รายละเอียด:</label>
+                <textarea id="details" name="details" rows="4" placeholder="ระบุรายละเอียดเพิ่มเติม..."
+                    style="background-color: #343a40; color: #eee; border: 1px solid #444; border-radius: 5px; padding: 5px;"></textarea>
+    
+                <!-- แนบเอกสาร -->
+                <label for="attachment"style="color: #fff;">แนบเอกสาร (ถ้ามี):</label>
+                <input type="file" id="attachment" name="attachment"
+                    style="background-color: #343a40; color: #eee; border: 1px solid #444; border-radius: 5px; padding: 5px;">
+    
+                <!-- ปุ่มส่ง -->
+                <button type="button" onclick="submitForm()"
+                    style="background-color: #ffc107; color: #212529; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">ส่งคำขอ</button>
+            </form>
+        </div>
+
+
+        <script>
+            function updateOptions() {
+                const requestType = document.getElementById('request-type').value;
+                const subtypeSelect = document.getElementById('subtype');
+                const workScheduleDiv = document.getElementById('work-schedule');
+                const leaveDatesDiv = document.getElementById('leave-dates');
+    
+                // ลบตัวเลือกเก่าออกทั้งหมด
+                subtypeSelect.innerHTML = '<option value="" disabled selected>-- เลือกประเภท --</option>';
+                workScheduleDiv.style.display = 'none';
+                leaveDatesDiv.style.display = 'none';
+    
+                if (requestType === 'leave') {
+                    // ตัวเลือกสำหรับ "ขอลา"
+                    const leaveOptions = [
+                        { value: 'sick-leave', text: 'ลาป่วย' },
+                        { value: 'vacation-leave', text: 'ลาพักร้อน' },
+                        { value: 'personal-leave', text: 'ลากิจ' }
+                    ];
+                    leaveOptions.forEach(option => {
+                        const newOption = document.createElement('option');
+                        newOption.value = option.value;
+                        newOption.text = option.text;
+                        subtypeSelect.add(newOption);
+                    });
+                    leaveDatesDiv.style.display = 'block'; // แสดงวันเวลาสำหรับการลา
+                } else if (requestType === 'shift-change') {
+                    // ตัวเลือกสำหรับ "ขอเปลี่ยนกะ"
+                    const shiftOptions = [
+                        { value: 'shift-swap', text: 'เปลี่ยนกะงาน' },
+                        { value: 'shift-cover', text: 'ขอให้ผู้อื่นทำแทน' }
+                    ];
+                    shiftOptions.forEach(option => {
+                        const newOption = document.createElement('option');
+                        newOption.value = option.value;
+                        newOption.text = option.text;
+                        subtypeSelect.add(newOption);
+                    });
+                    workScheduleDiv.style.display = 'block'; // แสดงช่องช่วงเวลากะงาน
+                }
+            }
+    
+            function submitForm() {
+                const requestType = document.getElementById('request-type').value;
+                const subtype = document.getElementById('subtype').value;
+    
+                if (requestType && subtype) {
+                    alert('ส่งคำขอ: ' + requestType + ' - ' + subtype);
+                    document.getElementById('request-form').submit(); // ส่งฟอร์ม
+                } else {
+                    alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+                }
+            }
+        </script>
+</body>
+
+</html>

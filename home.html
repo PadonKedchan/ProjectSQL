@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าหลัก</title>
+    <!-- เพิ่ม Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #121212;
+            /* สีพื้นหลังเข้ม */
+            color: #eee;
+            /* สีข้อความ */
+        }
+
+        .employee-profile {
+            background-color: #212529;
+            /* สีพื้นหลังของโปรไฟล์ */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-icon {
+            margin-right: 20px;
+        }
+
+        .profile-info h2 {
+            color: #ffc107;
+            /* สีหัวเรื่อง */
+        }
+
+        .additional-info h3,
+        .attendance-history h3 {
+            color: #ffc107;
+            /* สีหัวเรื่อง */
+        }
+
+        .table {
+            background-color: #343a40;
+            /* สีพื้นหลังของตาราง */
+            color: #eee;
+            /* สีข้อความในตาราง */
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #444;
+            /* เส้นขอบใต้แถว */
+            color: #000;
+            /* เปลี่ยนสีฟอนต์ของ td เป็นสีดำ */
+        }
+
+        .table th,
+        .table td {
+            border-color: #343a40;
+            /* สีของเส้นขอบ */
+
+        }
+
+        .table-dark th {
+            background-color: #343a40;
+            /* สีกระดาษหัวตาราง */
+            color: #fff;
+            /* สีตัวอักษร */
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #2a2a2a;
+            /* สีพื้นหลังแถวเลขคี่ */
+        }
+
+        .table-striped tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            /* สีพื้นหลังเมื่อวางเมาส์ */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h2>พนักงาน</h2>
+            <nav class="top-nav">
+                <ul>
+                    <li><a href="home.html">หน้าหลัก</a></li>
+                    <li><a href="requests.html">คำขอ</a></li>
+                    <li><a href="schedule.html">ตารางกะงาน</a></li>
+                </ul>
+            </nav>
+            <div class="icons">
+                <div class="notification" onclick="location.href='notifications.html';">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="user-icon" onclick="location.href='employee_profile.html';">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </header>
+
+        <section class="cards" style="display: flex; flex-wrap: wrap; justify-content: space-around; margin: 20px 0;">
+            <!-- การ์ด: ตารางกะงาน -->
+            <div class="card" onclick="location.href='schedule.html';"
+                style="background-color: #212529; color: #eee; padding: 20px; border-radius: 10px; margin: 10px; flex: 1 1 calc(30% - 40px); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); cursor: pointer;">
+                <h3 style="color: #ffc107;">ตารางกะงาน</h3>
+                <table style="width: 100%; border-collapse: collapse; color: #eee;">
+                    <tr>
+                        <th style="background-color: #343a40; color: #fff; padding: 10px;">วันที่</th>
+                        <th style="background-color: #343a40; color: #fff; padding: 10px;">กะงาน</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #fff; color: #fff;">2024-10-15</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #fff;color: #fff;">เช้า (8:00 - 16:00)</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #fff;color: #fff;">2024-10-16</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #fff;color: #fff;">เย็น (16:00 - 24:00)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- การ์ด: บันทึกเวลาเข้า-ออก -->
+            <div class="card" onclick="location.href='employee_profile.html';"
+                style="background-color: #212529; color: #eee; padding: 20px; border-radius: 10px; margin: 10px; flex: 1 1 calc(30% - 40px); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); cursor: pointer;">
+                <h3 style="color: #ffc107;">บันทึกเวลาเข้า-ออก</h3>
+                <ul style="padding-left: 20px;">
+                    <li style="margin: 5px 0;">เวลาเข้า: 2024-10-13 8:15 น.</li>
+                    <li style="margin: 5px 0;">เวลาออก: 2024-10-13 17:05 น.</li>
+                </ul>
+            </div>
+
+            <!-- การ์ด: การแจ้งเตือน -->
+            <div class="card" onclick="location.href='notifications.html';"
+                style="background-color: #212529; color: #eee; padding: 20px; border-radius: 10px; margin: 10px; flex: 1 1 calc(30% - 40px); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); cursor: pointer;">
+                <h3 style="color: #ffc107;">การแจ้งเตือน</h3>
+                <ul style="padding-left: 20px;">
+                    <li style="margin: 5px 0;">กะงานถัดไป: 2024-10-15 (เช้า)</li>
+                    <li style="margin: 5px 0;">คำขอเปลี่ยนกะ: อนุมัติแล้ว</li>
+                    <li style="margin: 5px 0;">คำขอเปลี่ยนกะ: ปฏิเสธแล้ว</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การแจ้งเตือน</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #121212; /* สีพื้นหลังเข้ม */
+            color: #eee; /* สีข้อความ */
+        }
+
+        .employee-profile {
+            background-color: #212529; /* สีพื้นหลังของโปรไฟล์ */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-icon {
+            margin-right: 20px;
+        }
+
+        .profile-info h2 {
+            color: #ffc107; /* สีหัวเรื่อง */
+        }
+
+        .additional-info h3,
+        .attendance-history h3 {
+            color: #ffc107; /* สีหัวเรื่อง */
+        }
+
+        .table {
+            background-color: #343a40; /* สีพื้นหลังของตาราง */
+            color: #eee; /* สีข้อความในตาราง */
+        }
+
+        .table th,
+        .table td {
+            border-color: #343a40; /* สีของเส้นขอบ */
+        }
+
+        .table-dark th {
+            background-color: #343a40; /* สีกระดาษหัวตาราง */
+            color: #fff; /* สีตัวอักษร */
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #2a2a2a; /* สีพื้นหลังแถวเลขคี่ */
+        }
+
+        .table-striped tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* สีพื้นหลังเมื่อวางเมาส์ */
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h2>พนักงาน</h2>
+            <nav class="top-nav">
+                <ul>
+                    <li><a href="home.html">หน้าหลัก</a></li>
+                    <li><a href="requests.html">คำขอ</a></li>
+                    <li><a href="schedule.html">ตารางกะงาน</a></li>
+                </ul>
+            </nav>
+            <div class="icons">
+                <div class="notification" onclick="location.href='notifications.html';">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="user-icon" onclick="location.href='employee_profile.html';">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="notifications-container" style="background-color: #212529; color: #eee; padding: 20px; border-radius: 10px;">
+            <h2 style="color: #ffc107;">การแจ้งเตือน</h2>
+            <ul class="notifications-list" style="list-style-type: none; padding: 0;">
+                <li style="margin: 10px 0;color: #121212;">คุณมีการแจ้งเตือน 1: การอนุมัติคำขอเปลี่ยนกะ</li>
+                <li style="margin: 10px 0;color: #121212">คุณมีการแจ้งเตือน 2: กะงานที่ใกล้ถึง</li>
+                <li style="margin: 10px 0;color: #121212">คุณมีการแจ้งเตือน 3: แจ้งเตือนการลา</li>
+                <li style="margin: 10px 0;color: #121212">คุณมีการแจ้งเตือน 4: การอนุมัติการลา</li>
+                <!-- เพิ่มรายการแจ้งเตือนตามความเหมาะสม -->
+            </ul>
+            <button onclick="location.href='home.html'" style="background-color: #ffc107; color: #212529; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">กลับไปหน้าหลัก</button>
+        </div>
+        
+
+    <script>
+        // ฟังก์ชันสำหรับอัปเดตจำนวนแจ้งเตือน
+        function updateNotificationCount() {
+            const notifications = document.querySelectorAll('.notifications-list li');
+            const badge = document.querySelector('.notification .badge');
+            badge.textContent = notifications.length; // อัปเดตค่าใน badge ตามจำนวนรายการ
+        }
+
+        // เรียกใช้งานฟังก์ชันเมื่อโหลดหน้า
+        window.onload = updateNotificationCount;
+    </script>
+</body>
+</html>

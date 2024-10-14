@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การแจ้งเตือน</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #121212; /* พื้นหลัง */
+            color: #e0e0e0; /* สีข้อความ */
+            font-family: Arial, sans-serif; /* ฟอนต์ */
+        }
+        .header {
+            background-color: #1f1f1f; /* พื้นหลังของ header */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        .top-nav li {
+            display: inline;
+            margin: 0 15px;
+        }
+        .top-nav a {
+            color: #e0e0e0; /* สีลิงก์ */
+            text-decoration: none;
+        }
+        .top-nav a:hover {
+            color: #ffc107; /* สีลิงก์เมื่อชี้เมาส์ */
+        }
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+        .notifications-container {
+            padding: 20px;
+            background-color: #1f1f1f; /* พื้นหลังของส่วนแจ้งเตือน */
+            border-radius: 8px; /* มุมมน */
+            margin: 20px; /* ระยะห่าง */
+        }
+        .notifications-container h2 {
+            color: #ffc107; /* สีหัวข้อ */
+        }
+        .notifications-list {
+            list-style-type: none; /* ไม่ให้มีจุดหน้ารายการ */
+            padding: 0; /* ปรับ padding */
+        }
+        .notifications-list li {
+            padding: 10px 0; /* เพิ่มระยะห่างในรายการ */
+            border-bottom: 1px solid #333; /* เส้นกั้นระหว่างรายการ */
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h2>การแจ้งเตือน</h2>
+            <nav class="top-nav">
+                <ul>
+                    <li><a href="manager_home.html">หน้าหลัก</a></li>
+                    <li><a href="manager_requests.html">คำขอ</a></li>
+                    <li><a href="manager_schedule.html">ตารางกะงาน</a></li>
+                    <li><a href="manager_reports.html">รายงาน</a></li>
+                    <li><a href="home.html" class="active">บัญชีของพนักงาน</a></li>
+                </ul>
+            </nav>
+            <div class="icons">
+                <div class="notification" onclick="location.href='manager_notifications.html';">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </div>
+                <div class="user-icon" onclick="location.href='manager_profile.html';">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </header>
+<center>
+        <div class="notifications-container" style="text-align: center; background-color: #1f1f1f; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+            <h2 style="color: #e0a800;">การแจ้งเตือน</h2>
+            <ul class="notifications-list" style="list-style-type: none; padding: 0; margin: 0;">
+                <li style="color: #000000;background-color: #fff">มีคำขอใหม่จากพนักงาน</li>
+                <li style="color: rgb(0, 0, 0);background-color: #fff">รายงานการลาเสร็จเรียบร้อย</li> <!-- เปลี่ยนสีเป็นสีเหลือง -->
+                <li style="color: #000000;background-color: #fff;">พนักงานไม่มาทำงาน (No Call/No Show)</li>
+                <button onclick="location.href='manager_home.html'" style="background-color: #ffc107; color: #212529; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">กลับไปหน้าหลัก</button>
+            </ul>
+        </div>
+        </center>
+    </div>
+</body>
+</html>

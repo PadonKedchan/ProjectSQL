@@ -1,0 +1,527 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E6E7E8;
+    color: #333333;
+}
+
+/* แถบหัวข้อ */
+.dashboard {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.header {
+    background-color: #01714B;
+    color: #FFFFFF;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h2 {
+    margin-left: 20px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.notification, .user-icon {
+    position: relative;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.notification .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border-radius: 50%;
+    padding: 3px 6px;
+    font-size: 12px;
+}
+
+.notification i, .user-icon i {
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+/* แถบเมนูด้านใน Header */
+.top-nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0 20px;
+}
+
+.top-nav ul li {
+    margin: 0 15px;
+}
+
+.top-nav ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.top-nav ul li a:hover, 
+.top-nav ul li a.active {
+    background-color: #218261;
+}
+
+/* การ์ด */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.card h3 {
+    color: #01714B;
+    margin-bottom: 15px;
+}
+
+.card ul {
+    list-style-type: none;
+}
+
+.card ul li {
+    margin: 8px 0;
+    padding: 8px;
+    background-color: #F9F9F9;
+    border-left: 5px solid #218261;
+    color: #333333;
+}
+.card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.card table, .card th, .card td {
+    border: 1px solid #E6E7E8;
+    padding: 8px;
+    text-align: left;
+}
+
+.card th {
+    background-color: #218261;
+    color: #FFFFFF;
+}
+
+.card-action {
+    display: flex;
+    justify-content: flex-end; /* จัดแนวปุ่มไปที่ขวา */
+    margin-top: 15px; /* เว้นระยะด้านบน */
+}
+
+.card-action button {
+    background-color: #218261; /* เปลี่ยนสีปุ่ม */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card-action button:hover {
+    background-color: #218261; /* เปลี่ยนสีเมื่อชี้ที่ปุ่ม */
+}
+
+
+.request-form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.request-form h2 {
+    color: #01714B;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.request-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333333;
+}
+
+.request-form input[type="text"],
+.request-form input[type="datetime-local"],
+.request-form select,
+.request-form textarea,
+.request-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.request-form textarea {
+    resize: vertical;
+}
+
+.request-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #01714B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.request-form button:hover {
+    background-color: #218261;
+}
+
+/* สไตล์สำหรับตารางกะ */
+.schedule-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-container h2 {
+    text-align: center;
+    color: #01714B;
+    margin-bottom: 20px;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.schedule-table thead th {
+    background-color: #01714B;
+    color: #FFFFFF;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 2px solid #E6E7E8;
+}
+
+.schedule-table tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.schedule-table tbody tr:nth-child(even) {
+    background-color: #F9F9F9;
+}
+
+.schedule-table tbody tr:nth-child(odd) {
+    background-color: #FFFFFF;
+}
+
+.notifications-container {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    max-width: 600px;
+    margin: 20px auto;
+    
+}
+
+/* หัวข้อหน้าแจ้งเตือน */
+.notifications-container h2 {
+    color: #01714B;
+    text-align: center;
+}
+
+/* รายการแจ้งเตือน */
+.notifications-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.notifications-list li {
+    background-color: #F7F9FA;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.notifications-list li:hover {
+    background-color: #D8E8E4; /* สีเมื่อมีการชี้ */
+}
+
+/* ปุ่มกลับไปหน้าหลัก */
+.notifications-container button {
+    background-color: #218261;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    margin: 20px auto 0;
+    transition: background-color 0.3s;
+}
+
+.notifications-container button:hover {
+    background-color: #01714B; /* สีเมื่อชี้ที่ปุ่ม */
+}
+
+.employee-profile {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-icon {
+    margin-right: 20px;
+}
+
+.profile-info h2 {
+    color: #01714B;
+}
+
+.additional-info {
+    margin-top: 20px;
+}
+
+.additional-info h3 {
+    color: #01714B;
+}
+
+.attendance-history {
+    margin-top: 20px;
+}
+
+.attendance-history table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.attendance-history th, .attendance-history td {
+    padding: 10px;
+    border: 1px solid #E6E7E8;
+    text-align: left;
+}
+
+.attendance-history th {
+    background-color: #01714B;
+    color: #FFFFFF;
+}
+
+/* สไตล์สำหรับการจัดการคำขอ */
+.requests-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.requests-container h2 {
+    text-align: center;
+    color: #01714B;
+    margin-bottom: 20px;
+}
+
+.request-item {
+    background-color: #F9F9F9;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.request-item h3 {
+    color: #01714B;
+}
+
+.request-item p {
+    margin: 5px 0;
+}
+
+.request-item .request-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.request-item button {
+    background-color: #01714B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.request-item button:hover {
+    background-color: #218261; /* สีเมื่อชี้ที่ปุ่ม */
+}
+
+.requests-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+/* สไตล์สำหรับตารางรายงาน */
+.reports-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reports-container h2 {
+    text-align: center;
+    color: #01714B;
+    margin-bottom: 20px;
+}
+
+.reports-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.reports-list li {
+    background-color: #F9F9F9;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.reports-list li a {
+    color: #01714B;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.reports-list li:hover {
+    background-color: #D8E8E4; /* สีเมื่อมีการชี้ */
+}
+
+.edit-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #F9F9F9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.edit-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+}
+
+.edit-form button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    background-color: #01714B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-form button:hover {
+    background-color: #218261;
+}
+
+.employee-schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #FFF;
+}
+
+.employee-schedule-table th, .employee-schedule-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.employee-schedule-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.employee-schedule-table td button {
+    padding: 5px 10px;
+    background-color: #01714B;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.employee-schedule-table td button:hover {
+    background-color: #014f37;
+}
+
+.add-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background-color: #3e8e41;
+}

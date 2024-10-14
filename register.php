@@ -13,13 +13,22 @@ $password = isset($_POST['password']) ? $_POST['password'] : '';
 $confirm_password = isset($_POST['confirm-password']) ? $_POST['confirm-password'] : '';
 
 if (empty($email) || empty($password) || empty($confirm_password)) {
-    echo "Email and password are required.";
+    echo "<script>alert('Email and password are required.'); window.location.href='register.html';</script>";
     exit();
 }
 
 // ตรวจสอบว่ารหัสผ่านและการยืนยันรหัสผ่านตรงกัน
 if ($password !== $confirm_password) {
-    echo "Passwords do not match.";
+    echo "<script>alert('Passwords do not match.'); window.location.href='register.html';</script>";
+    exit();
+}
+
+// ตรวจสอบว่ามีอีเมลนี้อยู่ในฐานข้อมูลหรือไม่
+$sql_check = "SELECT * FROM users WHERE email = '$email'";
+$result = $conn->query($sql_check);
+
+if ($result->num_rows > 0) {
+    echo "<script>alert('Email is already registered. Please use a different email.'); window.location.href='login.html';</script>";
     exit();
 }
 
@@ -30,12 +39,10 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 $sql = "INSERT INTO users (email, password) VALUES ('$email', '$hashed_password')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-    // เปลี่ยนเส้นทางไปยังหน้า login.html หรือ dashboard.html หลังจากลงทะเบียนเสร็จ
-    header("Location: login.html");
+    echo "<script>alert('Registration successful! Redirecting to login.'); window.location.href='login.html';</script>";
     exit();
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "<script>alert('Error: " . $conn->error . "'); window.location.href='register.html';</script>";
 }
 
 // ปิดการเชื่อมต่อ

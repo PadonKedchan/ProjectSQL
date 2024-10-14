@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จัดการตารางกะ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #121212; color: #e0e0e0;">
+    <div class="dashboard">
+        <header class="header" style="background-color: #1f1f1f; padding: 20px; border-bottom: 1px solid #333;">
+            <h2>ตารางกะงาน</h2>
+            <nav class="top-nav">
+                <ul>
+                    <li><a href="manager_home.html">หน้าหลัก</a></li>
+                    <li><a href="manager_requests.html">คำขอ</a></li>
+                    <li><a href="manager_schedule.html">ตารางกะงาน</a></li>
+                    <li><a href="manager_reports.html">รายงาน</a></li>
+                    <li><a href="home.html" class="active">บัญชีของพนักงาน</a></li>
+                </ul>
+            </nav>
+            <div class="icons">
+                <div class="notification" onclick="location.href='manager_notifications.html';">
+                    <i class="fas fa-bell" style="color: #e0e0e0;"></i>
+                    <span class="badge" style="background-color: #f44336; color: white; border-radius: 50%; padding: 0 5px;">3</span>
+                </div>
+                <div class="user-icon" onclick="location.href='manager_profile.html';">
+                    <i class="fas fa-user-circle" style="color: #e0e0e0;"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="schedule-container" style="padding: 20px;background-color: #1f1f1f;">
+            <h3 style="color: #e0a800;">รายละเอียดกะงานของพนักงาน</h3>
+
+            <div class="employee-details">
+                <h4 style="color: #e0e0e0;">พนักงาน: สมชาย ใจดี</h4>
+                <table class="employee-schedule-table" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="color: #fff;">ชื่อพนักงาน</th>
+                            <th style="color: #fff;">กะงาน</th>
+                            <th style="color: #fff;">เวลาเริ่ม</th>
+                            <th style="color: #fff;">เวลาจบ</th>
+                            <th style="color: #fff;">แก้ไข</th>
+                            <th style="color: #fff;">ลบ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background-color: #1f1f1f;">
+                            <td>สมชาย ใจดี</td>
+                            <td>กะเช้า</td>
+                            <td>6:00</td>
+                            <td>15:00</td>
+                            <td><button class="edit-btn" onclick="openEditShiftForm('สมชาย ใจดี', 'กะเช้า', '6:00', '15:00')">แก้ไข</button></td>
+                            <td><button class="delete-btn" onclick="deleteShift('กะเช้า')">ลบ</button></td>
+                        </tr>
+                        <tr style="background-color: #1f1f1f;">
+                            <td>สมชาย ใจดี</td>
+                            <td>กะเย็น</td>
+                            <td>15:00</td>
+                            <td>24:00</td>
+                            <td><button class="edit-btn" onclick="openEditShiftForm('สมชาย ใจดี', 'กะเย็น', '15:00', '24:00')">แก้ไข</button></td>
+                            <td><button class="delete-btn" onclick="deleteShift('กะเย็น')">ลบ</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="add-btn" onclick="openAddShiftForm('สมชาย ใจดี')">เพิ่มกะงาน</button>
+            </div>
+            <br>
+            <div class="employee-details">
+                <h4 style="color: #e0e0e0;">พนักงาน: สมหญิง เก่งดี</h4>
+                <table class="employee-schedule-table" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="color: #fff;">ชื่อพนักงาน</th>
+                            <th style="color: #fff;">กะงาน</th>
+                            <th style="color: #fff;">เวลาเริ่ม</th>
+                            <th style="color: #fff;">เวลาจบ</th>
+                            <th style="color: #fff;">แก้ไข</th>
+                            <th style="color: #fff;">ลบ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background-color: #1f1f1f;">
+                            <td>สมหญิง เก่งดี</td>
+                            <td>กะกลางวัน</td>
+                            <td>9:00</td>
+                            <td>18:00</td>
+                            <td><button class="edit-btn" onclick="openEditShiftForm('สมหญิง เก่งดี', 'กะกลางวัน', '9:00', '18:00')">แก้ไข</button></td>
+                            <td><button class="delete-btn" onclick="deleteShift('กะกลางวัน')">ลบ</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="add-btn" onclick="openAddShiftForm('สมหญิง เก่งดี')">เพิ่มกะงาน</button>
+            </div>
+    
+            <!-- ฟอร์มแก้ไขกะงาน -->
+            <div id="editShiftForm" class="edit-form" style="display:none; background-color: #1f1f1f; padding: 20px; border-radius: 8px;">
+                <h4 style="color: #e0e0e0;">แก้ไขกะงาน</h4>
+                <label for="shiftType" style="color: #e0e0e0;">กะงาน:</label>
+                <input type="text" id="shiftType" disabled style="background-color: #333; color: #e0e0e0;">
+    
+                <label for="startTime" style="color: #e0e0e0;">เวลาเริ่ม:</label>
+                <input type="time" id="startTime" style="background-color: #333; color: #e0e0e0;">
+    
+                <label for="endTime" style="color: #e0e0e0;">เวลาจบ:</label>
+                <input type="time" id="endTime" style="background-color: #333; color: #e0e0e0;">
+    
+                <button style="background-color: #ffd600; color: #121212;" onclick="saveShiftChanges()">บันทึกการเปลี่ยนแปลง</button>
+                <button style="background-color: #f44336; color: white;" onclick="closeEditShiftForm()">ยกเลิก</button>
+            </div>
+    
+            <!-- ฟอร์มเพิ่มกะงาน -->
+            <div id="addShiftForm" class="edit-form" style="display:none; background-color: #1f1f1f; padding: 20px; border-radius: 8px;">
+                <h4 style="color: #e0e0e0;">เพิ่มกะงาน</h4>
+                <label for="newShiftType" style="color: #e0e0e0;">กะงานใหม่:</label>
+                <input type="text" id="newShiftType" style="background-color: #333; color: #e0e0e0;">
+    
+                <label for="newStartTime" style="color: #e0e0e0;">เวลาเริ่ม:</label>
+                <input type="time" id="newStartTime" style="background-color: #333; color: #e0e0e0;">
+    
+                <label for="newEndTime" style="color: #e0e0e0;">เวลาจบ:</label>
+                <input type="time" id="newEndTime" style="background-color: #333; color: #e0e0e0;">
+    
+                <button style="background-color: #ffd600; color: #121212;" onclick="addShift()">เพิ่มกะงาน</button>
+                <button style="background-color: #f44336; color: white;" onclick="closeAddShiftForm()">ยกเลิก</button>
+            </div>
+        </div>
+    
+        <script>
+            function openEditShiftForm(employeeName, shiftType, startTime, endTime) {
+                document.getElementById('shiftType').value = shiftType;
+                document.getElementById('startTime').value = startTime;
+                document.getElementById('endTime').value = endTime;
+                document.getElementById('editShiftForm').style.display = 'block';
+            }
+    
+            function closeEditShiftForm() {
+                document.getElementById('editShiftForm').style.display = 'none';
+            }
+    
+            function saveShiftChanges() {
+                const newShift = document.getElementById('shiftType').value;
+                const newStart = document.getElementById('startTime').value;
+                const newEnd = document.getElementById('endTime').value;
+                alert('กะงาน ' + newShift + ' ได้ถูกเปลี่ยนเป็น ' + newStart + ' - ' + newEnd);
+                closeEditShiftForm();
+                // ฟังก์ชันในการส่งข้อมูลไปยังเซิร์ฟเวอร์
+            }
+    
+            function deleteShift(shiftType) {
+                if (confirm('คุณแน่ใจว่าต้องการลบ ' + shiftType + ' หรือไม่?')) {
+                    alert('กะงาน ' + shiftType + ' ถูกลบแล้ว');
+                    // ฟังก์ชันในการลบข้อมูลจากเซิร์ฟเวอร์
+                }
+            }
+    
+            function openAddShiftForm(employeeName) {
+                document.getElementById('addShiftForm').style.display = 'block';
+            }
+    
+            function closeAddShiftForm() {
+                document.getElementById('addShiftForm').style.display = 'none';
+            }
+    
+            function addShift() {
+                const newShift = document.getElementById('newShiftType').value;
+                const newStart = document.getElementById('newStartTime').value;
+                const newEnd = document.getElementById('newEndTime').value;
+                alert('กะงาน ' + newShift + ' ได้ถูกเพิ่ม: ' + newStart + ' - ' + newEnd);
+                closeAddShiftForm();
+                // ฟังก์ชันในการส่งข้อมูลไปยังเซิร์ฟเวอร์
+            }
+        </script>
+    </body>
+</html>
