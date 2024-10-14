@@ -12,7 +12,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully"; // ใช้ในการตรวจสอบว่าเชื่อมต่อสำเร็จ
 
 // ไม่ควรปิดการเชื่อมต่อที่นี่
 // $conn->close();
